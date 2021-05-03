@@ -14,15 +14,12 @@ app.use(
 
 app.get('/:title', (req, res) => {
   const { title } = req.params;
-  console.log('to aqui', title);
   let dataToSend;
   const python = spawn('python', ['you2.py', title]);
   python.stdout.on('data', function (data) {
-    console.log('dentro');
     dataToSend = data.toString();
   });
   python.on('close', () => {
-    console.log('dentro do close agora');
     res.send(dataToSend);
   });
 });
