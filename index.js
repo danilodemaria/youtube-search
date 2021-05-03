@@ -7,7 +7,8 @@ const port = 4444;
 app.use(express.json());
 app.use(
   cors({
-    origin: ['https://danilodemaria.com.br'],
+    credentials: true,
+    origin: ['http://localhost:4444'],
   })
 );
 
