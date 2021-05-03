@@ -13,8 +13,8 @@ app.use(
 );
 
 app.get('/:title', (req, res) => {
-  console.log('to aqui', title);
   const { title } = req.params;
+  console.log('to aqui', title);
   let dataToSend;
   const python = spawn('python', ['you2.py', title]);
   python.stdout.on('data', function (data) {
