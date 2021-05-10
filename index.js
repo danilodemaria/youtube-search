@@ -12,10 +12,10 @@ app.use(
   })
 );
 
-app.get('/:title', (req, res) => {
-  const { title } = req.params;
+app.get('/:title/:limit', (req, res) => {
+  const { title, limit = 10 } = req.params;
   let dataToSend;
-  const python = spawn('python', ['you2.py', title]);
+  const python = spawn('python', ['you2.py', title, limit]);
   python.stdout.on('data', function (data) {
     dataToSend = data.toString();
   });
